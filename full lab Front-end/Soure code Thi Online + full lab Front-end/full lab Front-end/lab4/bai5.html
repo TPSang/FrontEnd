@@ -1,0 +1,68 @@
+<!doctype html> 
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Hello, world! </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  </head>
+  <body ng-app = "myapp">
+    <div ng-controller = "myctrl">
+        <div class="card col-6 m-auto">
+            <div class="card-header">
+              Sinh Viên
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                      <label>Họ và tên</label>
+                      <input ng-model="student.fullname" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày sinh</label>
+                        <input type="date" ng-model="student.date" class="form-control">
+                      </div>
+                    <div class="form-group">
+                      <label>Giới tính</label>
+                      <select ng-model="student.gender" class="form-control">
+                        <option >Nam</option>
+                        <option >Nữ</option>
+                    </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Điểm</label>
+                        <input ng-model="student.mark" class="form-control">
+                      </div>
+                    <div class="form-group">
+                      <label>Học lực</label>
+                      <div ng-bind="student.grade" class="form-control">
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                      <button class="btn btn-primary" ng-click="save()">Grade</button>
+                    </div>
+                  </form>
+            </div>
+          </div>
+    </div>
+    <script>
+      var app = angular.module("myapp",[])
+      app.controller("myctrl", function($scope){
+        $scope.save= function(){
+          var a = parseFloat($scope.student.mark);
+          if(a<5){
+            $scope.student.grade = "Rớt";
+          }
+          else{
+            $scope.student.grade = "Đậu";
+          }
+        }
+
+      });
+    </script>
+    <!-- Optional JavaScript:  jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" > </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> </script>
+  </body>
+</html>

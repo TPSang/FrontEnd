@@ -1,0 +1,67 @@
+<!doctype html> <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <title>Hello, world! </title>
+    <style>
+      input.ng-invalid {
+        background-image: url('img/gif1.gif');
+        background-position:center right;
+        background-repeat:no-repeat;
+        background-size: 30px 30px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container col-6" ng-app = "myapp">
+      <div ng-controller = "myctrl">
+            <div class="card">
+              <div class="card-header">
+                <h5>THÔNG TIN SINH VIÊN</h5>
+              </div>
+              <div class="card-body">
+                <form name="frmBonus">
+                  <div class="form-group">
+                    <label class="font-weight-bold">Họ và tên</label>
+                    <input ng-model="fullname"  class="form-control" name="txtFullname" required maxlength="25"/>
+                    <span ng-show="frmBonus.txtFullname.$invalid" class="badge badge-danger">Vui lòng nhập họ tên</span>
+                  </div>
+                  <div class="form-group">
+                    <label class="font-weight-bold">Điểm</label>
+                      <input ng-model="mark"  class="form-control" name="txtMark" type="number" min="0" max="10" />
+                      <span ng-show="frmBonus.txtMark.$invalid" class="badge badge-danger">Điểm phải từ 0 đến 10</span>
+                    </div>
+                  <div class="form-group">
+                    <label class="font-weight-bold">Email</label>
+                      <input ng-model="email"  class="form-control " name="txtEmail" type="email" />
+                      <span ng-show="frmBonus.txtEmail.$invalid" class="badge badge-danger">Không đúng định dạng email</span>
+                    </div>
+                  <div class="form-group">
+                    <label class="font-weight-bold">Số xe</label>
+                      <input ng-model="soxe"  class="form-control" name="txtSoxe" pattern="5\d-[A-Z]\d-((\d{4})|(\d{5}))" />
+                      <span ng-show="frmBonus.txtSoxe.$invalid" class="badge badge-danger">Không đúng số xe sài gòn</span>
+                    </div>
+                </form>
+              </div>
+              <div class="card-footer text-muted">
+                <button class="btn btn-primary">Lưu</button>
+              </div>
+            </div>
+      </div>
+    </div>
+   <script>
+      var app = angular.module("myapp",[])
+      app.controller("myctrl", function($scope){
+      });
+      
+      
+   </script>
+    <!-- Optional JavaScript:  jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" > </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> </script>
+  </body>
+</html>

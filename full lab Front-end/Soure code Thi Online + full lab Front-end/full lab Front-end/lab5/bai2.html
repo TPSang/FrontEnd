@@ -1,0 +1,107 @@
+<!doctype html> <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Hello, world! </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <style>
+      form{
+        background-color: lightgreen;
+        font-weight: bold;
+        padding: 50px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body ng-app = "myapp">
+    <br/>
+    <div class="container col-6">
+      <div ng-controller = "myctrl1" class="m-auto"> 
+        <form>
+          <div class="form-group">
+            <label>Họ và tên:</label>
+            <input ng-model="student.fullname" class="form-control " />
+          </div>
+          <div class="form-group">
+            <label>Ngày sinh:</label>
+            <input ng-model="student.birthday" class="form-control "/>
+          </div>
+          <div class="form-group">
+            <label>Điểm:</label>
+            <input ng-model="student.mark" class="form-control " />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" ng-click="save()">Lưu</button>
+            <button class="btn btn-danger" ng-click="cancel()">Hủy</button>
+          </div>
+        </form>
+      </div>
+      <div ng-controller = "myctrl2">
+        <table class="table table-bordered">
+          <tr>
+            <th>Họ và tên</th>
+            <th>Ngày sinh</th>
+            <th>Điểm</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>{{students[0].fullname}}</td>
+            <td>{{students[0].birthday}}</td>
+            <td>{{students[0].mark}}</td>
+            <td>
+              <a href="#" ng-click="edit(0)">Sửa</a>
+            </td>
+          </tr>
+          <tr>
+            <td>{{students[1].fullname}}</td>
+            <td>{{students[1].birthday}}</td>
+            <td>{{students[1].mark}}</td>
+            <td>
+              <a href="#" ng-click="edit(1)">Sửa</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    
+    <script>
+      var app = angular.module("myapp",[])
+      app.controller("myctrl1", function($scope, $rootScope){
+       $scope.save = function(){
+        $rootScope.students[$rootScope.index] = $scope.student;
+       }
+       $scope.cancel = function(){
+        $rootScope.student = angular.copy($rootScope.students[$rootScope.index]);
+       }
+      });
+      app.controller("myctrl2", function($scope, $rootScope){
+        $rootScope.students = [
+         {
+           fullname: "Nguyễn Văn Tèo",
+           birthday: "20-01-1995",
+           mark: 8.5
+         },
+         {
+           fullname: "Phạm Thị Nở",
+           birthday: "15-11-1985",
+           mark: 5.5
+         },
+         {
+           fullname: "Nguyễn Đình Châu",
+           birthday: "10-10-2000",
+           mark: 10
+         }
+       ];
+       $scope.edit = function(index){
+        $rootScope.index = index;
+        $rootScope.student = angular.copy($rootScope.students[index]);
+       }
+      });
+    </script>
+    <!-- Optional JavaScript:  jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" > </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> </script>
+  </body>
+</html>

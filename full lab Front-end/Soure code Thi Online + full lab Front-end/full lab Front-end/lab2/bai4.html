@@ -1,0 +1,82 @@
+<!doctype html> <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  </head>
+  <body>
+    <div class="col-8 m-auto">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Nhập Lương
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content pr-3">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">NHẬP LƯƠNG THÁNG</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="row">
+                  <div class="form-group col-6">
+                    <input type="text" class="form-control" id="mnv" placeholder="Nhập mã nhân viên">
+                  </div>
+                  <div class="form-group col-6">
+                    <input type="text" class="form-control" id="hvt" placeholder="Nhập họ và tên">
+                  </div>
+                </div> <!-- row -->
+                <div class="row">
+                  <div class="form-group col-6">
+                    <select class="form-control" id="clb" placeholder="Chọn câu lạc bộ">
+                      <option value="dn">Đà Nẵng</option>
+                      <option value="hagl">Hoàng Anh Gia Lai</option>
+                      <option value="hn">Hà Nội</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-6">
+                    <input type="text" class="form-control" id="luong" placeholder="Nhập lương cầu thủ">
+                  </div>
+                </div> <!-- row -->
+                <div class="row">
+                  <div class="form-group col-6">
+                    <input type="text" class="form-control" id="thuong" placeholder="Nhập tiền thưởng">
+                  </div>
+                  <div class="form-group col-6">
+                    <input type="text" class="form-control" id="pc" placeholder="Nhập phụ cấp (nếu có)">
+                  </div>
+                </div> <!-- row -->
+                <div class="row">
+                  <div class="form-group col-12">
+                    <textarea type="text" class="form-control" id="gc" placeholder="Nhập ghi chú - nếu có" row="3"></textarea>
+                  </div>
+                </div> <!-- row -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <div class="row">
+                <button class="btn btn-lg btn-info ml-3 font-weight-bold" type="submit">
+                  <i class="fas fa-save"></i> &nbsp; LƯU &nbsp; &nbsp;
+                </button>
+                <button class="btn btn-secondary btn-lg ml-3" type="reset" data-dismiss="modal">
+                  <i class="fas fa-window-close"></i> HỦY 
+                </button>
+              </div> <!-- row -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+
+    <!-- Optional JavaScript:  jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" > </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> </script>
+  </body>
+</html>

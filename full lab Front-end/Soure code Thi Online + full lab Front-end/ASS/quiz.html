@@ -1,0 +1,40 @@
+<section class="ftco-section">
+  <div class="container" >
+    <div class="row" >
+      <div class="col-lg-12 ftco-animate">
+          <div class="card" style="height: 500px;">
+              <div class="card-header">
+                  <div class="row">
+                      <div class="col-6"><h4>{{quizName}}</h4></div>
+                      <div class="col-4 text-info"><span id="countdown" class="timer badge badge-primary"></span></div>
+                      <div class="col-2"><span class="badge badge-danger">Điểm: {{mark}} / {{summark}}</span></div>
+                  </div>
+              </div>
+              <div class="card-body p-5" ng-repeat="q in listQuizs | limitTo:1:begin">
+                  <p class="text-danger">{{begin+1}}. {{q.Text}}?</p>
+                  <input type="hidden" id="dapAn" value="{{q.AnswerId}}" />
+                  <p ng-repeat="a in q.Answers">
+                      <input type="radio" name="radio" ng-model="traLoi.checked" value="{{a.Id}}"> 
+                          {{a.Text}} 
+                      </input>
+                    </p>
+                    <input type="hidden" id="cauTraLoi" value="{{traLoi.checked}}">
+              </div>
+              <div class=" m-auto pb-0">
+                <nav aria-label="Page navigation example m-auto ">
+                  <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="" ng-click="first()"><i class="fas fa-step-backward"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="" ng-click="prev()"><i class="fas fa-backward"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="" ng-click="next()"><i class="fas fa-forward"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="" ng-click="last()"><i class="fas fa-step-forward"></i></a></li>
+                    <button type="button" class="btn btn-success ml-5" ng-click="subMit()" >SUBMIT</button>
+                      </ul>
+                </nav>
+                
+              </div>
+            </div>          
+
+      </div> <!-- .col-md-8 -->
+    </div>    
+  </div>    
+</section> <!-- .section -->   

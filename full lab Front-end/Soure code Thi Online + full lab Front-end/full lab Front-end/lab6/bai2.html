@@ -1,0 +1,84 @@
+<!doctype html> <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <title>Hello, world! </title>
+  </head>
+  <body>
+    <div class="container col-6" ng-app = "myapp">
+      <div ng-controller = "myctrl">
+        <div class="card">
+          <div class="card-header">
+            <h5>TÍNH THƯỞNG TẾT NGUYÊN ĐÁN</h5>
+          </div>
+          <div class="card-body p-0">
+            <form>
+              <table class="table m-0">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">TÊN HÀNG</th>
+                    <th scope="col">SỐ LƯỢNG</th>
+                    <th scope="col">ĐƠN GIÁ</th>
+                    <th scope="col">THÀNH TIỀN</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="item in items" ng-init="item.quantity=1">
+                    <td>
+                      <input ng-model="item.buy"  type="checkbox"/>
+                    </td>
+                    <td ng-bind="item.name"></td>
+                    <td>
+                      <input ng-model="item.quantity" ng-disabled="!item.buy" class="form-control " type="number"/>
+                    </td>
+                    <td ng-bind="item.price|currency"></td>
+                    <td ng-bind="item.price*item.quantity|currency"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+          </div>
+          <div class="card-footer text-muted">
+            TIỀN TIỀN: <strong>{{getAmount()|currency}}</strong> VNĐ
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var app = angular.module("myapp",[])
+      app.controller("myctrl", function($scope){
+       $scope.items = [
+         {
+           name: "Nước ngọt", 
+           price: 10000
+         },
+         {
+           name: "Cà phê đen", 
+           price: 12000
+         },
+         {
+           name: "Thuốc lá", 
+           price: 18000
+         }
+       ];
+       $scope.getAmount = function(){
+         var amount = 0; 
+         for(var i = 0; i < $scope.items.length; i++ ){
+          if($scope.items[i].buy){
+            amount += $scope.items[i].price * $scope.items[i].quantity;
+          }
+         }
+         return amount;
+       }
+      });
+
+    </script>
+    <!-- Optional JavaScript:  jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" > </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> </script>
+  </body>
+</html>

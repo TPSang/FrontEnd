@@ -1,0 +1,29 @@
+<section class="ftco-section" >
+    <div class="container">
+            <div class="row" >
+                <div class="col-md-3 mb-4" ng-repeat="m in listMonHocs | limitTo:8:begin"  >
+                <a href="#!view/quiz/{{m.Id}}/{{m.Name}}" class="text-danger" style="text-decoration: none;">
+                    <div class="card-deck" >
+                        <div class="card " >
+                        <img src="images/logos/{{m.Logo}}" class="card-img-top" alt="..." style="height: 200px;">
+                            <div class="card-footer" style="height: 60px;">
+                            <small class="text-muted">
+                                <p class="text-danger text-center font-weight-bold m-0">{{m.Name}}</p></small>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class=" m-auto pb-0">
+                <nav aria-label="Page navigation example m-auto ">
+                  <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="" ng-click="first()"><i class="fas fa-step-backward"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="" ng-click="prev()"><i class="fas fa-backward"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="" ng-click="next()"><i class="fas fa-forward"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="" ng-click="last()"><i class="fas fa-step-forward"></i></a></li>
+                  </ul>
+                </nav>
+              </div>
+    </div>
+    
+  </section>

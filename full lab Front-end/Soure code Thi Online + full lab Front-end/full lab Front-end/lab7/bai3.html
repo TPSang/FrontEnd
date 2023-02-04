@@ -1,0 +1,60 @@
+<!doctype html> <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="Prods.js"></script>
+    <title>Hello, world! </title>
+  </head>
+  <body ng-app = "myapp">
+    <div class="container col-8" ng-app = "myapp">
+      <div ng-controller = "myctrl">
+        <div class="card" >
+          <div class="card-header">
+            DANH SÁCH HÀNG HÓA
+          </div>
+          <div class="card-body p-0" >
+              <table class="table table-bordered m-0">
+                <thead>
+                  <tr class="text-info">
+                    <th scope="col">SẢN PHẨM</th>
+                    <th scope="col">ĐƠN GIÁ</th>
+                    <th scope="col">GIẢM GIÁ</th>
+                    <th scope="col">NGÀY</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr ng-repeat = "p in products|orderBy:'-price'|limitTo:8:16">
+                    <td>{{p.name|uppercase}}</td>
+                    <td>{{p.price|currency}}</td>
+                    <td>{{p.discount|percentage:2}}</td>
+                    <td>{{p.date|date:"MMMM-dd, yyyy" }}</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<script>
+      var app = angular.module("myapp",[])
+      app.controller("myctrl", function($scope){
+        $scope.products = list;
+      });
+      app.filter('percentage', function($filter){
+        return function (input, decimals){
+          return $filter('number')(input * 100, decimals) + '%';
+        }
+      })
+      
+
+    </script>
+    <!-- Optional JavaScript:  jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" > </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> </script>
+  </body>
+</html>

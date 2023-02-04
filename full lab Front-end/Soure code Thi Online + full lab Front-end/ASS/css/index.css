@@ -1,0 +1,16 @@
+.container-fluid{
+    margin: 0 auto;
+    width: 100%;
+}
+header{
+    height: 250px; 
+}
+
+footer{
+    height: 350px; 
+    background-color: lightblue;
+}
+header{
+    position: relative;
+}
+

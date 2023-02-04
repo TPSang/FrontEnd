@@ -1,0 +1,59 @@
+<!doctype html> <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <title>Hello, world! </title>
+  </head>
+  <body>
+    <div class="container col-4" ng-app = "myapp">
+      <div ng-controller = "myctrl">
+        <div class="card">
+          <div class="card-header">
+            <h4>TÍNH THƯỞNG TẾT NGUYÊN ĐÁN</h4>
+          </div>
+          <div class="card-body">
+            <form name="frmBonus">
+              <div class="form-group">
+                <label class="font-weight-bold">Số Poly</label>
+                <input ng-model="number" class="form-control" name="txtNumber" type="number" poly-number />
+                <span ng-show="frmBonus.txtNumber.$invalid" class="badge badge-danger">Số này không chia hết cho 2 và 9</span>
+                <span ng-show="frmBonus.txtNumber.$valid" class="badge badge-success">Số chia hết cho 2 và 9</span>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer text-muted">
+            <button class="btn btn-primary">Kiểm tra</button>  
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var app = angular.module("myapp",[])
+      app.controller("myctrl", function($scope){
+      });
+      app.directive("polyNumber", function(){
+        return{
+          require: "ngModel",
+          link: function(scope, element, attr, mCtrl){
+            mCtrl.$parsers.push(function(value){
+              var number = parseInt(value);
+              if(number % 2 == 0 && number % 9 == 0){
+                mCtrl.$setValidity('charE', true);
+              }else{
+                mCtrl.$setValidity('charE', false);
+              }
+              return value;
+            });
+          }
+        }
+      });
+
+    </script>
+    <!-- Optional JavaScript:  jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" > </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> </script>
+  </body>
+</html>

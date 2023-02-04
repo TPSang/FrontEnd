@@ -1,0 +1,116 @@
+<!doctype html> <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-messages.min.js"></script>
+    <script src="https://cdn.rawgit.com/Stepan-Kasyanenko/use-form-error/master/src/use-form-error.js"></script>
+    <link rel ="stylesheet" href="css/dangky.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <title>PS09898 - Nguyễn Đình Châu </title>
+  </head>
+  <body ng-app = "myapp">
+    <div class="container" ng-controller = "myctrl">
+      <div class="row">
+        <div class="col-lg-10 col-xl-9 mx-auto">
+          <div class="card card-signin flex-row my-5 " >
+            <div class="card-img-left d-none d-md-flex">
+               <!-- Background image for card set in CSS! -->
+            </div>
+            <div class="card-body">
+              <h5 class="card-title text-center">Đăng Ký</h5>
+              <form class="form-signin" name="frmBonus">
+                <div class="form-label-group">
+                  <input type="text" ng-model="student.username" name="txtTaiKhoan" id="inputUserame" class="form-control" placeholder="Tài Khoản" required >
+                  <label for="inputUserame">Tài Khoản</label>
+                  <span ng-show="frmBonus.txtTaiKhoan.$invalid" class="badge badge-danger ml-3">Vui lòng nhập tài khoản</span>
+                </div>
+                <div class="form-label-group">
+                  <input type="password" ng-model="student.password" name="txtMatKhau" id="inputPassword" class="form-control" placeholder="Mật Khẩu" required >
+                  <label for="inputPassword">Mật Khẩu</label>
+                  <span ng-show="frmBonus.txtMatKhau.$invalid" class="badge badge-danger ml-3">Vui lòng nhập mật khẩu</span>
+                </div>
+                
+                <div class="form-label-group">
+                  <input type="password" ng-model="student.passwordCf" name="txtXNMatKhau" id="inputConfirmPassword" class="form-control" placeholder="Xác nhận mật khẩu" required>
+                  <label for="inputConfirmPassword">Xác nhận mật khẩu</label>
+                  <span ng-show="frmBonus.txtXNMatKhau.$invalid" class="badge badge-danger ml-3">Vui lòng nhập xác nhận mật khẩu</span>
+
+                </div>
+                
+                <div class="form-label-group">
+                  <input type="text" ng-model="student.fullname" name="txtHoVaTen" id="inputHVT" class="form-control" placeholder="Họ và tên" required>
+                  <label for="inputHVT">Họ và tên</label>
+                  <span ng-show="frmBonus.txtHoVaTen.$invalid" class="badge badge-danger ml-3">Vui lòng nhập họ và tên</span>
+                </div>
+
+                <div class="form-label-group">
+                  <input type="email" ng-model="student.email" name="txtEmail" id="inputEmail" class="form-control" placeholder="Địa chỉ Email" required>
+                  <label for="inputEmail">Địa chỉ Email </label>
+                  <span ng-show="frmBonus.txtEmail.$invalid" class="badge badge-danger ml-3">Vui lòng không để trống & nhập đúng định dạng Email</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="ml-3 mr-3">Giới tính: </label>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" name = "gender" ng-model="gender" value="true" class="custom-control-input" id="customRadioInline1" required>
+                    <label class="custom-control-label" for="customRadioInline1">Nam</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" name="gender" ng-model="gender" value="false" class="custom-control-input" id="customRadioInline2">
+                    <label class="custom-control-label" for="customRadioInline2">Nữ</label>
+                  </div>
+                </div>
+                <div class="form-label-group">
+                  <input type="text" ng-model="student.birthday" name="txtNgaySinh" id="inputNgaySinh" class="form-control"  required>
+                  <label for="inputNgaySinh">Ngày sinh (YYYY-MM-DD)</label>
+                  <span ng-show="frmBonus.txtNgaySinh.$invalid" class="badge badge-danger ml-3">Vui lòng nhập ngày sinh</span>
+                </div>
+
+                <input type="hidden" ng-model="student.marks" value="0" name="marks" id="summark"/>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" ng-click="insert()" >Đăng Ký</button>
+                <a class="d-block text-center mt-2 small" href="login.html">Đăng Nhập</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var app = angular.module("myapp",['ngMessages']);
+      app.controller("myctrl", function($scope, $http){
+        $scope.students = [];
+        $http.get("db/Students.js").then(function(response){
+          $scope.students = response.data;
+        });
+        $scope.insert = function(){
+         $scope.students.push(angular.copy($scope.student));
+         console.log($scope.students); 
+         Swal.fire(
+                  'Thành Công',
+                  'Đăng ký thành công!',
+                  'success'
+         )
+         setTimeout(function(){ Swal.fire({
+          title: 'Bạn có muốn đăng nhập không?',
+          text: "Chọn OK để chuyển sang trang đăng nhập!",
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK!'
+        }).then((result) => {
+          if (result.value) {
+            location.replace("/login.html");
+          }
+        }) }, 2000);
+        }
+      });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" > </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  </body>
+</html>

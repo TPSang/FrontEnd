@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping Mall</title>
+	
+	<!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+	<!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+	<!-- Poly -->
+    <link href="css/poly.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container" ng-app="myapp">
+        <header class="row" ng-include="'header.html'">
+
+        </header>
+        <nav class="row" ng-include="'menu.html'">
+            
+        </nav>
+        <div class="poly-sheet row">
+
+            <article class="col-sm-9">
+                <!--Nội dung trang web-->
+                <div ng-show="loading" class="pull-right label label-danger">Loading...</div>
+                <div ng-view></div>
+                
+            </article>
+
+            <aside class="col-sm-3">
+                <!--CartInfo-->
+                <div class="poly-cart" ng-include="'cart.html'">
+	                
+                </div>
+                <!--/CartInfo-->
+
+                <!--Search-->
+                <div class="nn-cart" ng-include="'search.html'">
+                    
+                </div>
+                <!--/Search-->
+
+                <div class="panel-group" id="accordion">
+                    <style>
+                        #accordion .panel-heading {
+                            cursor: pointer;
+                        }
+                    </style>
+                    <!--Category-->
+                    <div class="panel panel-default" ng-include="'category.html'">
+                        
+                    </div>
+                    <!--/Category-->
+
+                    <!--Supplier-->
+                    <div class="panel panel-default" ng-include="'supplier.html'">
+                        
+                    </div>
+                    <!--/Supplier-->
+
+                    <!--Special-->
+                    <div class="panel panel-default" ng-include="'special.html'">
+                        
+                    </div>
+                    <!--/Special-->
+                </div>
+
+            </aside>
+        </div>
+
+        <footer class="panel panel-default row" ng-include="'footer.html'">
+            
+        </footer>
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/webapp.js"></script>
+</body>
+</html>

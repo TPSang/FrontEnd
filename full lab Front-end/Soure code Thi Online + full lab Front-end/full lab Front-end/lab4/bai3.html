@@ -1,0 +1,79 @@
+<!doctype html> <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Hello, world! </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  </head>
+  <body ng-app = "myapp">
+    <div ng-controller = "myctrl">
+      <table class="table table-bordered table-condensed w-50" style="margin: 0 auto;">
+        <tr>
+          <th>Hình</th>
+          <th>Họ và tên</th>
+          <th>Ngày sinh</th>
+          <th>Giới tính</th>
+          <th>Điểm</th>
+        </tr>
+        <tr>
+          <td><img src="images/{{student[0].photo}}" alt="" style="width: 100px; height: 100px;"></td>
+          <td>{{student[0].fullname}}</td>
+          <td>{{student[0].birthday}}</td>
+          <td>{{student[0].gender}}</td>
+          <td>{{student[0].mark}}</td>
+        </tr>
+        <tr>
+          <td><img src="images/{{student[1].photo}}" alt="" style="width: 100px; height: 100px;"></td>
+          <td>{{student[1].fullname}}</td>
+          <td>{{student[1].birthday}}</td>
+          <td>{{student[1].gender}}</td>
+          <td>{{student[1].mark}}</td>
+        </tr>
+        <tr>
+          <td><img src="images/{{student[2].photo}}" alt="" style="width: 100px; height: 100px;"></td>
+          <td>{{student[2].fullname}}</td>
+          <td>{{student[2].birthday}}</td>
+          <td>{{student[2].gender}}</td>
+          <td>{{student[2].mark}}</td>
+        </tr>
+      </table>
+    </div>
+    
+
+
+
+    <script>
+      var app = angular.module("myapp",[])
+      app.controller("myctrl", function($scope){
+        $scope.student = [
+          {
+          fullname: "Nguyễn Văn Tuân",
+          birthday: "01-01-1990",
+          gender: "Nam",
+          photo: "av4.png",
+          mark: "10.0"
+          },
+          {
+          fullname: "Nguyễn Văn Tèo",
+          birthday: "01-01-1990",
+          gender: "Nam",
+          photo: "av1.png",
+          mark: "10.0"
+          },
+          {
+          fullname: "Nguyễn Văn Tí",
+          birthday: "01-01-1990",
+          gender: "Nam",
+          photo: "av2.png",
+          mark: "10.0"
+          },
+        ];
+      });
+    </script>
+    <!-- Optional JavaScript:  jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" > </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> </script>
+  </body>
+</html>

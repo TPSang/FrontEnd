@@ -1,0 +1,114 @@
+<!doctype html> <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Hello, world! </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <style>
+      form{
+        background-color: lightgreen;
+        font-weight: bold;
+        padding: 50px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body >
+    <div ng-app = "myapp" class="container col-6">
+      <div ng-controller="myctrl"> 
+        <form>
+          <div class="form-group">
+            <label>Họ và tên:</label>
+            <input ng-model="student.fullname" class="form-control " />
+          </div>
+          <div class="form-group">
+            <label>Ngày sinh:</label>
+            <input ng-model="student.birthday" class="form-control "/>
+          </div>
+          <div class="form-group">
+            <label>Điểm:</label>
+            <input ng-model="student.mark" class="form-control " />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" ng-click="insert()" ng-show="index == -1">Thêm</button>
+            <button class="btn btn-success" ng-click="update()" ng-disabled="index == -1">Sửa</button>
+            <button class="btn btn-warning" ng-click="delete()" ng-disabled="index == -1">Xóa</button>
+            <button class="btn btn-danger" ng-click="cancel()" >Hủy</button>
+            <button class="btn btn-light" ng-click="clear()" >Mới</button>
+          </div>
+        </form>
+        <table class="table table-bordered">
+          <tr>
+            <th>Họ và tên</th>
+            <th>Ngày sinh</th>
+            <th>Điểm</th>
+            <th>Xếp loại</th>
+            <th></th>
+          </tr>
+          <tr ng-repeat="st in students">
+            <td>{{st.fullname}}</td>
+            <td>{{st.birthday}}</td>
+            <td>{{st.mark}}</td>
+            <td>
+              <span ng-if="st.mark < 5">Yếu/Kém</span>
+              <span ng-if="st.mark >= 5 && st.mark <8">Trung Bình/Khá</span>
+              <span ng-if="st.mark >= 8">Giỏi/Xuất sắc</span>
+            </td>
+            <td>
+              <a href="#" ng-click="edit($index)">Sửa</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    
+    <script>
+      var app = angular.module("myapp",[]);
+      app.controller("myctrl", function($scope){
+        $scope.students = [];
+        $scope.student = {};
+        $scope.index = -1;
+       $scope.insert = function(){
+         $scope.students.push(angular.copy($scope.student));
+         console.log($scope.students); 
+         $scope.clear();
+       }
+       $scope.clear = function(){
+         $scope.student = {};
+         $scope.index = -1;
+       }
+       $scope.update = function(index){
+        if($scope.index != -1){
+          $scope.students[$scope.index] = angular.copy($scope.student);
+        }else{
+          aler("Chọn dòng để sửa");
+        }
+       }
+       $scope.delete = function(index){
+        if($scope.index != -1){
+          $scope.students.splice($scope.index, 1);
+        $scope.clear();
+        }else{
+          aler("Chọn dòng để xóa");
+        }
+       }
+       $scope.cancel = function(index){
+        if($scope.index == -1){
+          $scope.clear();
+        }else{
+          $scope.edit($scope.index)
+        } 
+       }
+       $scope.edit = function(index){
+        $scope.index = index;
+        $scope.student = angular.copy($scope.students[index]);
+       }
+      });
+    </script>
+    <!-- Optional JavaScript:  jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" > </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> </script>
+  </body>
+</html>

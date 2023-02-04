@@ -1,0 +1,62 @@
+<div class="col-12 m-auto pt-5 pb-5">
+    <div class="card" style="background-color: lightblue;">
+      <div class="card-header ">
+        <h4 class="text-danger"><i class="fas fa-edit"></i> Cập nhật tài khoản</h4>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="input1" class="font-weight-bold">Họ và tên: </label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="far fa-address-card"></i></span>
+                </div>
+                <input type="text" ng-model="student.fullname"  class="form-control" id="input1" placeholder="Họ và tên" >
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="input2" class="font-weight-bold">Email</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
+                </div>
+                <input type="email" ng-model="student.email" class="form-control" id="input2" placeholder="Email" >
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="input3" class="font-weight-bold">Ngày sinh</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar-alt"></i></span>
+                </div>
+                <input type="text" ng-model="student.birthday" class="form-control" id="input3" placeholder="Ngày Sinh" >
+              </div>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="input4" class="font-weight-bold">Học Phí</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-money-bill-alt"></i></span>
+                </div>
+                <input type="text" ng-model="student.schoolfee" class="form-control" id="input4" placeholder="Học Phí" disabled value="3">
+              </div>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="input5" class="font-weight-bold">Điểm</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-award"></i></span>
+                </div>
+                <input type="text" ng-model="student.marks" class="form-control" id="input5" placeholder="Điểm" disabled value="3">
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-lg btn-success btn-block text-uppercase" type="submit" ng-click="update()" >CẬP NHẬT</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

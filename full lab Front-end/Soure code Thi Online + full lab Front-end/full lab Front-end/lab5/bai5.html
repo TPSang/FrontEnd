@@ -1,0 +1,91 @@
+<!doctype html> <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Hello, world! </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <style>
+      .poly-prod{
+        height: 150px;
+        max-width: 95%;
+      }
+      .card-footer{
+        color: red;
+        font-size: 18px;
+      }
+
+    </style>
+  </head>
+  <body ng-app = "myapp">
+    <br/>
+    <div class="container">
+      <div ng-controller = "myctrl" class="row" > 
+        <div class="col-md-3 mb-4" ng-repeat="p in products" >
+        <div class="card-deck" >
+          <div class="card " >
+            <img src="img/{{p.image}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title text-primary text-center">{{p.name}}</h5>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted"><p class="text-danger text-center font-weight-bold">${{p.price}}</p></small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var app = angular.module("myapp",[])
+      app.controller("myctrl", function($scope){
+       $scope.products = [
+         {
+           name: "iPhone 7 Plus 32GB",
+           image:  "dienthoai1.jpg",
+           price: 1200
+         },
+         {
+           name: "Samsung Note 9",
+           image:  "dienthoai2.jpg",
+           price: 500
+         },
+         {
+           name: "iPhone Xs Max 64GB",
+           image:  "dienthoai3.jpg",
+           price: 300
+         },
+         {
+           name: "Xiaomi Mi 9 64GB",
+           image:  "dienthoai4.jpg",
+           price: 1000
+         },
+         {
+           name: "iPhone X 64GB",
+           image:  "dienthoai5.jpg",
+           price: 700
+         },
+         {
+           name: "Samsung Galaxy S10+",
+           image:  "dienthoai6.jpg",
+           price: 500
+         },
+         {
+           name: "Redmi Note 7 64GB",
+           image:  "dienthoai7.jpg",
+           price: 1000
+         },
+         {
+           name: "Samsung Galaxy A70",
+           image:  "dienthoai8.jpg",
+           price: 2000
+         },
+       ];
+      });
+    </script>
+    <!-- Optional JavaScript:  jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" > </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> </script>
+  </body>
+</html>

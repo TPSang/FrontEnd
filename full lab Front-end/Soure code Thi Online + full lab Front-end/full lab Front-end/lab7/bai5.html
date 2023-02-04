@@ -1,0 +1,95 @@
+<!doctype html> <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <title>Hello, world! </title>
+  </head>
+  <body ng-app = "myapp" onload="">
+    <div class="container col-8" ng-app = "myapp">
+      <div ng-controller = "myctrl">
+        <div class="card" style="height: 561px;">
+          <div class="card-header">
+            DANH SÁCH HÀNG HÓA
+          </div>
+          <div class="card-body p-0" >
+              <table class="table table-bordered m-0">
+                <thead>
+                  <tr class="text-info">
+                    <th scope="col"><a href="#" ng-click="sortBy('name')">SẢN PHẨM</a></th>
+                    <th scope="col"><a href="#" ng-click="sortBy('price')">ĐƠN GIÁ</a></th>
+                    <th scope="col"><a href="#" ng-click="sortBy('discount')">GIẢM GIÁ</a></th>
+                    <th scope="col"><a href="#" ng-click="sortBy('date')">NGÀY</a></th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr ng-repeat = "p in products|orderBy:prop|limitTo:8:begin">
+                    <td>{{p.name|uppercase}}</td>
+                    <td>{{p.price|currency}}</td>
+                    <td>{{p.discount|percentage:2}}</td>
+                    <td>{{p.date|date:"MMMM-dd, yyyy" }}</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+          <div class=" m-auto pb-0">
+            <nav aria-label="Page navigation example m-auto ">
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#" ng-click="first()"><i class="fas fa-step-backward"></i></a></li>
+                <li class="page-item"><a class="page-link" href="#" ng-click="prev()"><i class="fas fa-backward"></i></a></li>
+                <li class="page-item"><a class="page-link" href="#" ng-click="next()"><i class="fas fa-forward"></i></a></li>
+                <li class="page-item"><a class="page-link" href="#" ng-click="last()"><i class="fas fa-step-forward"></i></a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<script>
+      var app = angular.module("myapp",[])
+      app.controller("myctrl", function($scope, $http){
+        $scope.products = [];
+        $http.get("Prods1.js").then(function(response){
+          $scope.products = response.data;
+        });
+        $scope.prop = "name";
+        $scope.sortBy = function(prop){
+          $scope.prop = prop;
+        }
+        $scope.begin = 0;
+        $scope.first = function(){
+          $scope.begin = 0;
+        }
+        $scope.prev = function(){
+          if($scope.begin > 0){
+            $scope.begin -= 8;
+          }
+        }
+        $scope.next = function(){
+          if($scope.begin < (Math.ceil($scope.products.length / 8) - 1) * 8){
+            $scope.begin += 8;
+          }
+        }
+        $scope.last = function(){
+            $scope.begin = (Math.ceil($scope.products.length / 8) - 1) * 8;
+        }
+      });
+      app.filter('percentage', function($filter){
+        return function (input, decimals){
+          return $filter('number')(input * 100, decimals) + '%';
+        }
+      })
+
+      
+
+    </script>
+    <!-- Optional JavaScript:  jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" > </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> </script>
+  </body>
+</html>

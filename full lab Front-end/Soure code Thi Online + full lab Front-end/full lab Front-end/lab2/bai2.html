@@ -1,0 +1,77 @@
+<!doctype html> <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  </head>
+  <body>
+    <div class="col-8 m-auto">
+      <div class="card">
+        <div class="card-header text-uppercase font-weight-bold text-danger">
+          <i class="fas fa-edit"></i> Nhập lương tháng 12
+        </div>
+        <div class="card-body bg-info text-white">
+          <form >
+            <div class="row">
+              <div class="form-group col-6">
+                <label  for="mnv">Mã nhân viên</label>
+                <input type="text" class="form-control border border-dark " id="mnv" placeholder="Nhập mã nhân viên" >
+              </div>
+              <div class="form-group col-6">
+                <label for="hvt">Họ và tên</label>
+                <input type="text" class="form-control border border-dark" id="hvt" placeholder="Nhập họ và tên">
+              </div>
+            </div> <!-- row -->
+            <div class="row">
+              <div class="form-group col-6">
+                <label for="clb">Câu lạc bộ</label>
+                <select class="form-control border border-dark" id="clb" placeholder="Chọn câu lạc bộ">
+                  <option value="dn">Đà Nẵng</option>
+                  <option value="hagl">Hoàng Anh Gia Lai</option>
+                  <option value="hn">Hà Nội</option>
+                </select>
+              </div>
+              <div class="form-group col-6">
+                <label for="luong">Lương</label>
+                <input type="text" class="form-control border border-dark" id="luong" placeholder="Nhập lương cầu thủ">
+              </div>
+            </div> <!-- row -->
+            <div class="row">
+              <div class="form-group col-6">
+                <label for="thuong">Thưởng</label>
+                <input type="text" class="form-control border border-dark" id="thuong" placeholder="Nhập tiền thưởng">
+              </div>
+              <div class="form-group col-6">
+                <label for="pc">Phụ cấp</label>
+                <input type="text" class="form-control border border-dark" id="pc" placeholder="Nhập phụ cấp (nếu có)">
+              </div>
+            </div> <!-- row -->
+            <div class="row">
+              <div class="form-group col-12">
+                <label for="gc">Ghi chú</label>
+                <textarea type="text" class="form-control border border-dark" id="gc" placeholder="Nhập ghi chú - nếu có" row="3"></textarea>
+              </div>
+            </div> <!-- row -->
+            <div class="row">
+              <button class="btn btn-warning btn-lg btn-info ml-3 font-weight-bold" type="submit">
+                <i class="fas fa-save"></i> &nbsp; LƯU &nbsp; &nbsp;
+              </button>
+              <button class="btn btn-secondary btn-lg ml-3" type="reset">
+                <i class="fas fa-window-close"></i> HỦY 
+              </button>
+            </div> <!-- row -->
+          </form>
+        </div>
+        <div class="card-footer text-muted">
+          Vui lòng nhập thông tin lương của cầu thủ
+        </div>
+      </div>
+    </div>  
+
+    <!-- Optional JavaScript:  jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" > </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> </script>
+  </body>
+</html>

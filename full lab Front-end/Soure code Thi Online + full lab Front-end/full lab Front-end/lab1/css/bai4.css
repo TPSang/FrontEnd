@@ -1,0 +1,38 @@
+.container{
+    margin: 0 auto;
+    width: 100%;
+}
+header{
+    height: 200px; background-color: mediumblue;
+}
+.row > article{
+    min-height: 300px; background-color: darkgrey;
+}
+.row > aside{
+    min-height: 300px; background-color: darkgrey;
+}
+footer{
+    height: 50px; background-color: mediumblue;
+}
+header{
+    position: relative;
+}
+.shopping-mall {
+    position: absolute;
+    bottom: 20px; left: 10px;
+    font-variant: small-caps;
+}
+.shopping-mall>h1{
+    font-family: Impact;
+    font-size: 50px;
+    color: white;
+    letter-spacing: 0.3px;
+    text-shadow: 2px 2px 2px black;
+    border-bottom: 1px dotted grey;
+    padding-bottom: 0;
+    margin: 0;
+}
+.shopping-mall>h5{
+    margin-top: 5px;
+    letter-spacing: 0.5px;
+}
